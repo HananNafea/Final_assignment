@@ -1,0 +1,11 @@
+
+// Get all books based on title
+public_users.get('/title/:title',function (req, res) {
+    const title = req.params.title;
+    for (var i in books) {
+    if (title == books[i].title){
+        res.send(Object.entries(books[i]))
+    }
+    }
+      return res.status(300).json({message: "Yet to be implemented"}); 
+});
