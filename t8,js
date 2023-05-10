@@ -1,0 +1,16 @@
+// Add a book review
+regd_users.put("/auth/review/:isbn", (req, res) => {
+    const review = req.params.review;
+    const isbn = req.params.isbn;
+    const auth = req.params.auth;
+    if (auth) { //Check is user exists
+        let username = req.body.username;
+        let password = req.body.password;
+        if(review) {
+            books["reviews"] = review
+        }
+        books[isbn]=review;
+        res.send(`the review for the book with isbn  ${isbn} added/updated.`);
+    }
+    return res.status(300).json({message: "Yet to be implemented"});
+});
