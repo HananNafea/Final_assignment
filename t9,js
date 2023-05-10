@@ -1,0 +1,21 @@
+regd_users.delete("/auth/review/:isbn", (req, res) => {
+    const isbn = req.params.isbn;
+    const auth = req.params.auth;
+    let username = req.body.username;
+    let password = req.body.password;
+    if (auth) { 
+       
+        if (authenticatedUser(username,password)) {
+            let accessToken = jwt.sign({
+              data: password
+            }, 'access', { expiresIn: 60 * 60 });
+            req.session.authorization = {
+                accessToken,username
+            }
+    review = review.filter((isbn) => books[isbn] != isbn);
+        }
+    }
+    res.send(`Review with the isbn  ${isbn} for user ${username} has been deleted.`);
+
+    
+});
